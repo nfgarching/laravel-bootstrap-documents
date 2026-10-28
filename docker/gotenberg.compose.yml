@@ -1,0 +1,25 @@
+# Gotenberg-Dienst für nfgarching/documents
+#
+# In die bestehende docker-compose.yml der Laravel-App übernehmen (gleiches Netzwerk wie die App)
+# oder auf dem QNAP in der Container Station als eigene Anwendung anlegen.
+# Die App erreicht Gotenberg dann unter http://gotenberg:3000 (NFDOCUMENTS_GOTENBERG_URL).
+
+services:
+  gotenberg:
+    image: gotenberg/gotenberg:8
+    restart: unless-stopped
+    command:
+      - gotenberg
+      - --api-timeout=120s
+      # Speicher sparen auf dem NAS: Prozesse regelmäßig neu starten
+      - --chromium-restart-after=50
+      - --libreoffice-restart-after=20
+    # Kein „ports:“ nötig – die App spricht Gotenberg im internen Netz an.
+    # Gotenberg hat keine Anmeldung: den Port nie ins Internet freigeben.
+    # Zum Testen vom Rechner aus vorübergehend:
+    # ports:
+    #   - "3000:3000"
+    deploy:
+      resources:
+        limits:
+          memory: 1g

@@ -1,0 +1,27 @@
+{
+    "name": "nfgarching/documents",
+    "description": "PDF-Dokumente aus bearbeitbaren Vorlagen (Briefbogen nach DIN 5008, Vereinbarungen, Verträge) mit Gotenberg, Livewire 4 und Bootstrap 5.3",
+    "type": "library",
+    "license": "proprietary",
+    "require": {
+        "php": "^8.3",
+        "ext-zip": "*",
+        "illuminate/support": "^13.0",
+        "livewire/livewire": "^4.0",
+        "gotenberg/gotenberg-php": "^2.27",
+        "guzzlehttp/guzzle": "^7.8",
+        "phpoffice/phpword": "^1.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Nfgarching\\Documents\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Nfgarching\\Documents\\DocumentsServiceProvider"
+            ]
+        }
+    }
+}
